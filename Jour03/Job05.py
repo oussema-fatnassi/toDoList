@@ -1,10 +1,9 @@
-# Créer une classe nommée “taskManager” qui est chargée de la gestion d’une tâche.
-# Ajouter les méthodes suivantes a la classe :
-# ➔ Une méthode “add” qui ajoute une tâche.
-# ➔ Une méthode “delete” qui supprime une tâche.
-# ➔ Une méthode “show” qui affiche l’ensemble des tâches à réaliser.
+# Modifier la classe “taskManager” afin d'intégrer une méthode à votre classe
+# permettant de sauvegarder les tâches dans un fichier JSON. Ajouter toutes
+# les méthodes nécessaires à la manipulation de ce JSON.
 
 from Job01 import Task
+import json
 
 class TaskManager():
     
@@ -15,10 +14,9 @@ class TaskManager():
     
     def __init__(self):
         self.task_list = []
-        
-       #Added priority for Job04
-    def add(self,title, description, due_date, completed, priority):
-        new_task = Task(title, description, due_date, completed, priority)
+       
+    def add(self,title, description, due_date, completed):
+        new_task = Task(title, description, due_date, completed)
         self.task_list.append(new_task)
         #print("Task added:", new_task)
         

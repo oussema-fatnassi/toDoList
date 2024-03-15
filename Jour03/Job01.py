@@ -7,14 +7,18 @@
 # Ajouter des méthodes afin de pouvoir manipuler ses attributs.
 
 class Task():
-    def __init__(self, title, description, due_date, completed):
+    #Added priority for JOB04
+    def __init__(self, title, description, due_date, completed, priority):
         self.title = title
         self.description = description
         self.due_date = due_date
         self.completed = completed
+        #Job04
+        self.priority = priority
 
     def __str__(self):
-        return f"Title: {self.title}, Description: {self.description}, Due Date {self.due_date}, Completed {self.completed}"
+        #Job04
+        return f"Title: {self.title}, Description: {self.description}, Due Date {self.due_date}, Completed {self.completed}, Priority {self.priority}"
 
     def get_title(self):
         return self.title
@@ -27,6 +31,9 @@ class Task():
     
     def get_completed(self):
         return self.completed
+    #Job04
+    def get_priority(self):
+        return self.priority
     
     def set_title(self, x):
         self.title = x
@@ -39,5 +46,9 @@ class Task():
     
     def set_completed(self, x):
         self.completed = x
+
+    #Job04
+    def set_priority(self, x):
+        self.priority = x
     
     

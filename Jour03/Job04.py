@@ -1,3 +1,6 @@
+# Chaque tâche peut avoir une importance différente. Ajouter la possibilité de
+# définir des priorités pour une tâche.
+
 import tkinter as tk
 import tkinter.messagebox
 from Job01 import Task
@@ -76,10 +79,23 @@ class MyTaskManagerGUI():
         self.myEntry3 = tk.Entry(self.root, width=80)
         self.myEntry3.pack(pady=5)
 
+        #JOB04 menu button for the priority option
+        menubutton = tk.Menubutton(self.root, text="Select Option")
+        menu = tk.Menu(menubutton, tearoff=False)
+        menubutton["menu"] = menu
+        menu.add_command(label="1")
+        menu.add_command(label="2")
+        menu.add_command(label="3")
+        menu.add_command(label="4")
+        menu.add_command(label="5")
+        menubutton.pack()
+
+        '''
         self.label = tk.Label(self.root, text="Priority", font=("Arial",10))
         self.label.pack()
         self.myEntry4 = tk.Entry(self.root, width=80)
         self.myEntry4.pack(pady=5)
+        '''
 
         #check mark to see if a task is complete or not
         self.check_state = tk.IntVar()
