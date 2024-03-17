@@ -1,9 +1,10 @@
-# Modifier la classe “taskManager” afin d'intégrer une méthode à votre classe
-# permettant de sauvegarder les tâches dans un fichier JSON. Ajouter toutes
-# les méthodes nécessaires à la manipulation de ce JSON.
+# Dans votre classe “taskManager” permettre l’exportation de la tâche sous le
+# format CSV.
 
 from Job01 import Task
 import json
+import os
+import csv
 
 class TaskManager():
     
@@ -43,6 +44,32 @@ class TaskManager():
         with open(filename, 'r') as f:
             data = json.load(f)
         self.task_list = [Task(**task_data) for task_data in data] #task data is a dictionary created by json to store the information about the tasks
+
+    #Job06
+    #clears all tasks from task_list
+    def clear_json_file(self, filename):
+        # Vérifie si le fichier existe
+        if os.path.exists(filename):
+            # Ouvre le fichier en mode écriture pour le vider
+            with open(filename, 'w') as json_file:
+                json_file.write('')
+
+    #Job08
+    def export_to_csv(self, filename):
+        with open(filename, 'w', newline='') as csvfile:
+            fieldnames = ['Title', 'Description', 'Due Date', 'Completed', 'Priority']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+            writer.writeheader()
+            for task in self.task_list:
+                writer.writerow({
+                    'Title': task.title,
+                    'Description': task.description,
+                    'Due Date': task.due_date,
+                    'Completed': "Yes" if task.completed else "No",
+                    'Priority': task.priority
+                })
+                
    
 task_manager = TaskManager() 
 #task_manager.add("Write CV", "Write CV for Soft Skill class", "18/03/2024", False)
@@ -50,3 +77,4 @@ task_manager = TaskManager()
 #task_manager.show()
 #task_manager.delete(1)
 #task_manager.show()
+

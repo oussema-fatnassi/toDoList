@@ -1,3 +1,7 @@
+# À l’aide de votre terminal, et des différentes fonctions en python, mettre en
+# place une interface utilisateur simple qui permet à un utilisateur d’ajouter,
+# supprimer ou d’afficher ses tâches à réaliser.
+
 import tkinter as tk
 import tkinter.messagebox
 from Job01 import Task

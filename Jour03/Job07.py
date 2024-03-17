@@ -1,9 +1,9 @@
-# Modifier la classe “taskManager” afin d'intégrer une méthode à votre classe
-# permettant de sauvegarder les tâches dans un fichier JSON. Ajouter toutes
-# les méthodes nécessaires à la manipulation de ce JSON.
+# Ajouter une méthode permettant d’afficher les tâches filtrées en fonction de
+# leur importance.
 
 from Job01 import Task
 import json
+import os
 
 class TaskManager():
     
@@ -43,6 +43,23 @@ class TaskManager():
         with open(filename, 'r') as f:
             data = json.load(f)
         self.task_list = [Task(**task_data) for task_data in data] #task data is a dictionary created by json to store the information about the tasks
+
+    #Job06
+    #clears all tasks from task_list
+    def clear_json_file(self, filename):
+        # Vérifie si le fichier existe
+        if os.path.exists(filename):
+            # Ouvre le fichier en mode écriture pour le vider
+            with open(filename, 'w') as json_file:
+                json_file.write('')
+
+    #Job07, if the task has the same priority given, then return the list of tasks
+    def filter_tasks_by_priority(self, priority):
+        filtered_tasks = []
+        for task in self.task_list:
+            if task.priority == priority:
+                filtered_tasks.append(task)
+        return filtered_tasks
    
 task_manager = TaskManager() 
 #task_manager.add("Write CV", "Write CV for Soft Skill class", "18/03/2024", False)
@@ -50,3 +67,4 @@ task_manager = TaskManager()
 #task_manager.show()
 #task_manager.delete(1)
 #task_manager.show()
+

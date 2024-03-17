@@ -50,5 +50,15 @@ class Task():
     #Job04
     def set_priority(self, x):
         self.priority = x
+
+    #Job05 to transform the list into a dictionary to be saved in a json file
+    def to_dict(self):
+        return {
+            "title" : self.title,
+            "description" : self.description,
+            "due date" : self.due_date,
+            "completed" : self.completed,
+            "priority" : self.priority
+        }
     
     

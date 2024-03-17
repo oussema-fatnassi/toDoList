@@ -8,14 +8,9 @@ from Job01 import Task
 
 class TaskManager():
     
-    '''def __init__(self, title, description, due_date, completed):
-        super().__init__(title, description, due_date, completed)
-        #self.tasks = []'''
-    
-    
     def __init__(self):
         self.task_list = []
-        
+
        #Added priority for Job04
     def add(self,title, description, due_date, completed, priority):
         new_task = Task(title, description, due_date, completed, priority)
